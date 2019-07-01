@@ -79,7 +79,7 @@ public class Tests {
             e.printStackTrace();
         }
         assertTimeoutPreemptively(timeout, ()->{
-            array.sort();
+            array.sort(Comparator.comparingInt(o -> o));
         });
         assertArrayEquals(list.toArray(), array.toArray());
 

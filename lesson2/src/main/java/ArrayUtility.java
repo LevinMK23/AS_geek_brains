@@ -1,4 +1,8 @@
-public class ArrayUtility {
+import java.util.Comparator;
+
+public class ArrayUtility<T> {
+
+    private MyArray<T> myArray;
 
     static <T extends Comparable<? super T>>
     void sort(MyArray<T> array) {
@@ -59,7 +63,46 @@ public class ArrayUtility {
 
     static <T extends Comparable<? super T>>
     void quickSort(MyArray<T> array) {
-        //TODO
+
+        recQuickSort(array, 0, array.size() - 1);
+    }
+
+    static <T extends Comparable<? super T>>
+    void recQuickSort(MyArray<T> array, int left, int right) {
+        if (right - left <= 0) {
+            return;
+
+        } else {
+            T someValue = array.get(right);
+            int partition = partition(array, left, right, someValue);
+            recQuickSort(array, left, partition - 1);
+            recQuickSort(array, partition + 1, right);
+        }
+
+    }
+
+    static <T extends Comparable<? super T>>
+    int partition(MyArray<T> array, int left, int right, T someValue) {
+        int leftVal = left - 1;
+        int rightVal = right;
+        T temp;
+
+        while (true) {
+            while (leftVal < right && array.get(++leftVal).compareTo(someValue) < 0) ;
+
+            while (rightVal > 0 && array.get(--rightVal).compareTo(someValue) > 0) ;
+
+            if (leftVal >= rightVal) {
+                break;
+
+            } else {
+                temp = array.get(leftVal);
+                array.set(leftVal, array.get(rightVal));
+                array.set(rightVal, temp);
+            }
+        }
+
+        return leftVal;
     }
 
     static <T extends Comparable<? super T>>
@@ -81,9 +124,10 @@ public class ArrayUtility {
             } else {
 
                 if (array.get(mid).compareTo(value) < 0) {
+
                     lowBound = mid + 1;
-                }
-                if (array.get(mid).compareTo(value) > 0) {
+
+                } else {
                     topBound = mid - 1;
 
                 }
