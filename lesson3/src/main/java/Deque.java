@@ -11,51 +11,91 @@ public class Deque<T> implements TwoSizeQueue<T> {
 
     @Override
     public void addBack(T element) {
-        //TODO
+        TwoLinkNode<T> newNode = new TwoLinkNode<>(element);
+        if (isEmpty()) {
+            front = newNode;
+
+        } else {
+            back.setNext(newNode);
+            newNode.setPrev(back);
+        }
+
+        back = newNode;
+        size++;
     }
 
     @Override
     public void addFront(T element) {
-        //TODO
+        TwoLinkNode<T> newNode = new TwoLinkNode<>(element);
+
+        if (isEmpty()) {
+            back = newNode;
+
+        } else {
+            front.setPrev(newNode);
+            newNode.setNext(front);
+        }
+
+        front = newNode;
+        size++;
     }
 
     @Override
     public T popBack() {
-        //TODO
-        return null;
+        TwoLinkNode<T> temp = back;
+        back = back.getPrev();
+        back.setNext(null);
+
+        return temp.getValue();
     }
 
     @Override
     public T popFront() {
-        //TODO
-        return null;
+        TwoLinkNode<T> temp = front;
+        front = front.getNext();
+        front.setPrev(null);
+
+        return temp.getValue();
     }
 
     @Override
     public T back() {
-        //TODO
-        return null;
+        return back.getValue();
     }
 
     @Override
     public T front() {
-        //TODO
-        return null;
+        return front.getValue();
     }
 
     @Override
     public void order() {
-        //TODO
+        TwoLinkNode<T> temp = front;
+        System.out.print("---> : ");
+        while (temp != null) {
+            System.out.print(temp.getValue() + " ");
+            temp = temp.getNext();
+        }
+        System.out.println();
     }
 
     @Override
     public void reverseOrder() {
-        //TODO
+        TwoLinkNode<T> temp = back;
+        System.out.print("<--- : ");
+        while (temp != null) {
+            System.out.print(temp.getValue() + " ");
+            temp = temp.getPrev();
+        }
+        System.out.println();
     }
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 }

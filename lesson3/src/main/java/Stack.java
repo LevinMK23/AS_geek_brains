@@ -37,8 +37,8 @@ public class Stack<T> implements Lifo<T> {
 
     @Override
     public T peek() {
-        //TODO
-        return null;
+
+        return tail.getValue();
     }
 
     @Override
