@@ -1,7 +1,13 @@
 public class Queue<T> implements Fifo<T> {
 
-    private OneLinkNode<T> head;
+    private OneLinkNode<T> head, last;
     private int size;
+
+    public Queue() {
+        this.head = null;
+        this.last = null;
+        this.size = 0;
+    }
 
     @Override
     public String toString() {
@@ -11,29 +17,52 @@ public class Queue<T> implements Fifo<T> {
 
     @Override
     public void push(T element) {
-        //TODO
+        OneLinkNode<T> newLink = new OneLinkNode<>(element);
+        if (isEmpty()) {
+            head = newLink;
+        } else {
+            last.setNext(newLink);
+        }
+
+        last = newLink;
+        size++;
     }
 
     @Override
     public T pop() {
-        //TODO
-        return null;
+        OneLinkNode<T> temp = head;
+
+        if (head.getNext() == null) {
+            last = null;
+        }
+
+        head = head.getNext();
+
+        size--;
+        return temp.getValue();
     }
 
     @Override
     public T peek() {
-        //TODO
-        return null;
+        return head.getValue();
     }
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        return size;
     }
 
     @Override
     public void order() {
-        //TODO
+        OneLinkNode<T> current = head;
+
+        while (current != null) {
+            System.out.print(current.getValue() + " ");
+            current = current.getNext();
+        }
+    }
+
+    public boolean isEmpty() {
+        return (head == null);
     }
 }
