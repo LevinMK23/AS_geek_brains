@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class MyArray<T> {
 
-    private Integer[] data;
+    private Object[] data;
     private int size, capacity, q;
 
     public MyArray() {
@@ -25,7 +25,7 @@ public class MyArray<T> {
     }
 
     //вставка в конец массива
-    void add(Integer element){
+    void add(T element){
         if(size < capacity){
             data[size] = element;
             size++;
@@ -37,7 +37,7 @@ public class MyArray<T> {
         }
     }
 
-    void set(int index, Integer value){
+    void set(int index, T value){
         data[index] = value;
     }
 
@@ -77,33 +77,15 @@ public class MyArray<T> {
 
     T [] toArray(){
         //TODO
-        Object[] tmp = new Object[size];
-        System.arraycopy(data, 0, tmp, 0, size);
-        return (T[]) tmp;
+        return null;
     }
 
     void sort(){
-        int left = 0, right = size;
-        qs(data, left, right-1);
+        //TODO
     }
 
-    private void qs(Integer[] data, int left, int right) {
-        if(left < right){
-            int i = left, j = right;
-            int p = data[(i+j) / 2];
-            do{
-                while (data[i] < p) i++;
-                while (data[j] > p) j--;
-                if(i <= j){
-                    Integer tmp = data[i];
-                    data[i] = data[j];
-                    data[j] = tmp;
-                    i++; j--;
-                }
-            }while (i <= j);
-            qs(data, left, j);
-            qs(data, i, right);
-        }
+    private void qs(T [] data, int left, int right) {
+        //TODO
     }
 
 }

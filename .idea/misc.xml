@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -12,6 +15,7 @@
         <option value="$PROJECT_DIR$/lesson6/pom.xml" />
         <option value="$PROJECT_DIR$/lesson7/pom.xml" />
         <option value="$PROJECT_DIR$/lesson8/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson1/pom.xml" />
       </list>
     </option>
   </component>
