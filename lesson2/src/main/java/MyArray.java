@@ -11,7 +11,7 @@ public class MyArray<T extends Comparable<T>> {
     public MyArray() {
         size = 0;
         capacity = 128;
-        data = new Integer[capacity];
+        data = new Object[capacity];
     }
 
     public void show(){
@@ -22,23 +22,19 @@ public class MyArray<T extends Comparable<T>> {
     }
 
     public void add(T element){
-        if(size < capacity){
-            data[size] = element;
-            size++;
-        }
-        else {
+        if(size >= capacity){
             reallocate();
-            data[size] = element;
-            size++;
         }
+        data[size] = element;
+        size++;
     }
 
     public void set(int index, T value){
         data[index] = value;
     }
 
-    public T get(int index){
-        return (T) data[index];
+    public T get(int index) {
+        return (T)data[index];
     }
 
     public int size(){
@@ -46,34 +42,28 @@ public class MyArray<T extends Comparable<T>> {
     }
 
     public void add(int index, T element){
-        if(size < capacity){
-            if (size - index >= 0) {
-                System.arraycopy(data, index, data, index + 1, size - index);
-            }
-            data[index] = element;
-            size++;
-        }
-        else {
+        if(size >= capacity){
             reallocate();
-            if (size - index >= 0) {
-                System.arraycopy(data, index, data, index + 1, size - index);
-            }
-            data[index] = element;
-            size++;
         }
+        if (size - index >= 0) {
+            System.arraycopy(data, index, data,
+                        index + 1, size - index);
+        }
+        data[index] = element;
+        size++;
     }
 
     private void reallocate(){
         capacity *= 2;
         Object[] tmp = new Object[capacity];
-        if (size >= 0) System.arraycopy(data, 0, tmp, 0, size);
+        if (size >= 0) System.arraycopy(data, 0, tmp,
+                0, size);
         data = tmp;
     }
 
     public boolean remove(){
         size--;
         return size >= 0;
-
     }
 
     public boolean remove(int index){
@@ -146,22 +136,22 @@ public class MyArray<T extends Comparable<T>> {
     /*
      * Задача под звездочкой
      * решается опционально, кому интересно
+     * O(NlogN)
      * */
     public void quickSort(){
         //TODO
     }
 
-    private void quickSort(T [] data, int left, int right) {
+    private void quickSort(int left, int right) {
         //TODO
     }
 
     public static void main(String[] args) {
-        MyArray<Integer> arr = new MyArray<>();
+        MyArray<String> arr = new MyArray<>();
         for (int i = 0; i < 10; i++) {
-            arr.add(i+1);
+            arr.add("i+1");
         }
-        arr.add(3, 100);
-        arr.show();
+
         System.out.println(Arrays.toString(arr.toArray()));
     }
 
