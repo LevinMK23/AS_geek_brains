@@ -113,15 +113,6 @@ public class MyArray<T extends Comparable<T>> {
      * */
     public void insertSort(){
         //TODO
-        for (int i = 0; i < size; i++) {
-            for (int j = i + 1; j < size - i - 1; j++) {
-                if(((T)data[j]).compareTo((T)data[j+1]) < 0){
-                     T tmp = (T)data[j];
-                     data[j] = data[j+1];
-                     data[j+1] = tmp;
-                }
-            }
-        }
     }
 
     static class Pair<T> {
