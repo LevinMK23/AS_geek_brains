@@ -11,7 +11,7 @@ public class Main {
         }
         arr.show();
         //Arrays.sort();
-        //arr.sort(Comparator.comparingInt(o -> o));
+        arr.quickSort();
         arr.show();
     }
 }
