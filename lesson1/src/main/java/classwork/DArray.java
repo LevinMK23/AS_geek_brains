@@ -40,6 +40,7 @@ public class DArray<T> {
 
     public void remove(int index){
         //TODO
+
         System.out.println("Хахаха вот моя домашка");
     }
 
