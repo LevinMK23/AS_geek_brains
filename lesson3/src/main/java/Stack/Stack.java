@@ -24,7 +24,7 @@ public class Stack<T> implements LIFO<T> {
     }
 
     @Override
-    public T peek() {
+    public T top() {
         return tail.getValue();
     }
 

@@ -53,7 +53,7 @@ public class StackTasks {
     class crockeryStack {
 
         int limit;
-        LinkedList<Stack> stacks;
+        Stack<Stack> stacks;
 
         public crockeryStack(int limit) {
             this.limit = limit;
