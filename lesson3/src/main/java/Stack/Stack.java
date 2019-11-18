@@ -1,6 +1,8 @@
 package Stack;
 
-public class Stack<T> implements LIFO<T>{
+import java.util.Iterator;
+
+public class Stack<T> implements LIFO<T> {
 
     private Node<T> tail;
     private int size;
@@ -17,32 +19,44 @@ public class Stack<T> implements LIFO<T>{
 
     @Override
     public T pop() {
-        T tmp = tail.value;
-        tail = tail.prev;
-        size--;
-        return tmp;
+        // TODO: 18/11/2019
+        return null;
     }
 
     @Override
     public T peek() {
-        return tail.value;
+        return tail.getValue();
     }
 
     @Override
     public void push(T value) {
-        Node<T> node = new Node<>(value);
-        node.prev = tail;
-        tail = node;
-        size++;
+        // TODO: 18/11/2019
+
     }
 
     @Override
-    public void order() {
-        Node<T> tmp = tail;
-        while (tmp != null){
-            System.out.print(tmp.value + " ");
-            tmp = tmp.prev;
-        }
-        System.out.println();
+    public void show() {
+        // TODO: 18/11/2019
+    }
+
+    private Node<T> iterNode;
+
+    @Override
+    public Iterator<T> iterator() {
+        iterNode = tail;
+        return new Iterator<T>() {
+
+            @Override
+            public boolean hasNext() {
+                return iterNode != null;
+            }
+
+            @Override
+            public T next() {
+                T val = iterNode.getValue();
+                iterNode = iterNode.getPrev();
+                return val;
+            }
+        };
     }
 }
