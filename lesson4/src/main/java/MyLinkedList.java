@@ -49,6 +49,15 @@ public class MyLinkedList<T> implements Iterable<T> {
         //node.prev <= tmp <= node.next
     }
 
+    public T first() {
+        return head.value;
+    }
+
+
+    public T last() {
+        return tail.value;
+    }
+
     void add(T element){
         if(size == 0){
             head = tail = new Node<>(element);
