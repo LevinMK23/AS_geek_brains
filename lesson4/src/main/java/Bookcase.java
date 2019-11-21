@@ -3,6 +3,7 @@ public class Bookcase {
 
     private int shelvesCount;
     private int shelveCapacity;
+
     //класс должен работать!!!
     private MyLinkedList<MyLinkedList<String>> bookcase;
 

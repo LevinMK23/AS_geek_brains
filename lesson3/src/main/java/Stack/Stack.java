@@ -4,6 +4,16 @@ import java.util.Iterator;
 
 public class Stack<T> implements LIFO<T> {
 
+    private class Node<T> {
+        T value;
+        Node<T> prev;
+
+        public Node(T value) {
+            this.value = value;
+            prev = null;
+        }
+    }
+
     private Node<T> tail;
     private int size;
 
@@ -20,23 +30,42 @@ public class Stack<T> implements LIFO<T> {
     @Override
     public T pop() {
         // TODO: 18/11/2019
-        return null;
+        if (size == 0) return null;
+        T top = tail.value;
+        tail = tail.prev;
+        size--;
+        return top;
     }
 
     @Override
     public T top() {
-        return tail.getValue();
+        if (tail == null) return null;
+        return tail.value;
     }
 
     @Override
     public void push(T value) {
         // TODO: 18/11/2019
-
+        if (size == 0) {
+            tail = new Node<>(value);
+        }
+        else {
+            Node<T> node = new Node<>(value);
+            node.prev = tail;
+            tail = node;
+        }
+        size++;
     }
 
     @Override
     public void show() {
         // TODO: 18/11/2019
+        Node<T> node  = tail;
+        while (node != null){
+            System.out.print(node.value + " ");
+            node = node.prev;
+        }
+        System.out.println();
     }
 
     private Node<T> iterNode;
@@ -53,8 +82,8 @@ public class Stack<T> implements LIFO<T> {
 
             @Override
             public T next() {
-                T val = iterNode.getValue();
-                iterNode = iterNode.getPrev();
+                T val = iterNode.value;
+                iterNode = iterNode.prev;
                 return val;
             }
         };

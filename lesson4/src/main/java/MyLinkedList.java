@@ -59,16 +59,7 @@ public class MyLinkedList<T> implements Iterable<T> {
     }
 
     void add(T element){
-        if(size == 0){
-            head = tail = new Node<>(element);
-            size++;
-            return;
-        }
-        Node<T> node = new Node<>(element);
-        node.prev = tail;
-        tail.next = node;
-        tail = node;
-        size++;
+        // TODO: 21.11.2019  
     }
 
     void add(int index, T element){
