@@ -1,3 +1,5 @@
+import classwork.LinkList;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.function.Consumer;
@@ -13,36 +15,52 @@ public class MyLinkedList<T> implements Iterable<T> {
         size = 0;
     }
 
-    public Iterator<T> iterator(){
+    public Iterator<T> iterator() {
 
         iteratorNode = head;
 
         return new Iterator<T>() {
 
-            public void remove(){
-                //TODO
-                //удаляем текущий,
-                //следующий становится текущим
+            public void remove() {
+                iteratorNode = iteratorNode.prev;
+                Node<T> prev = iteratorNode.prev, next = iteratorNode.next;
+                if (prev == next && prev == null) {
+                    head = tail = null;
+                } else if(prev == null){
+                    head = head.next;
+                    head.prev.next = null;
+                    head.prev = null;
+                } else if(next == null) {
+                    tail = tail.prev;
+                    tail.next.prev = null;
+                    tail.next = null;
+                } else {
+                    prev.next.prev = null;
+                    prev.next = null;
+                    next.prev.next = null;
+                    next.prev = null;
+                    next.prev = prev;
+                    prev.next = next;
+                }
+                iteratorNode = next;
+                size--;
             }
 
             @Override
             public boolean hasNext() {
-                //TODO
-                //проверка не ссылаемся ли мы на null
-                return false;
+                return iteratorNode != null;
             }
 
             @Override
             public T next() {
-                //TODO
-                //возвращаем текущий
-                // и переходим к следющему
-                return null;
+                T value = iteratorNode.value;
+                iteratorNode = iteratorNode.next;
+                return value;
             }
         };
     }
 
-    void sortedAdd(T element){
+    void sortedAdd(T element) {
         //TODO
         //вставляем с головы в ближайшее место,
         //для которого выполняется:
@@ -58,33 +76,65 @@ public class MyLinkedList<T> implements Iterable<T> {
         return tail.value;
     }
 
-    void add(T element){
-        // TODO: 21.11.2019  
+    void add(T element) {
+        if (size == 0) {
+            head = tail = new Node<>(element);
+        } else {
+            tail.next = new Node<>(element);
+            tail.next.prev = tail;
+            tail = tail.next;
+        }
+        size++;
     }
 
-    void add(int index, T element){
+    void add(int index, T element) {
+        if(size == 0 && index == 0){
+            head = tail = new Node<>(element);
+            size++;
+            return;
+        }
+        if (index == 0) {
+            head.prev = new Node<>(element);
+            head.prev.next = head;
+            head = head.prev;
+            size++;
+            return;
+        }
+        if (index >= size) throw new ArrayIndexOutOfBoundsException();
+        Node<T> node = head;
+        int cnt = 0;
+        while (cnt < index){
+            node = node.next;
+            cnt++;
+        }
+        Node<T> tmp = new Node<>(element);
+        Node<T> last = node.prev;
+        last.next = tmp;
+        node.prev = tmp;
+        tmp.next = node;
+        tmp.prev = last;
+        size++;
+    }
+
+    void remove() {
         //TODO
     }
 
-    void remove(){
-        //TODO
-    }
-
-    int size(){
+    int size() {
         //TODO
         return size;
     }
 
-    void remove(int index){
+    void remove(int index) {
         //TODO
     }
 
-    T get(int index){
+    T get(int index) {
         //TODO
         return null;
     }
 
-    void set(int index, T value){
+    void set(int index, T value) {
         //TODO
     }
 

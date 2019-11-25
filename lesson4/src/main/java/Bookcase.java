@@ -23,12 +23,23 @@ public class Bookcase {
     //side - либо 'L' либо 'R'
     public void putBook(int shelveNumber, char side, String bookName) {
         // TODO: 21/11/2019
+        while(bookcase.get(shelveNumber).size() >= shelveCapacity){
+            shelveNumber++;
+            if (shelveNumber > shelvesCount) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        }
+        if(side == 'L') bookcase.get(shelveNumber).add(0, bookName);
+        else bookcase.get(shelveNumber).add(bookName);
     }
 
     //Взятая книга удаляется из шкафа!
     public String takeBook(int shelveNumber, int bookNumber) {
         // TODO: 21/11/2019
-        return null;
+        if(shelveNumber > shelvesCount || bookNumber > shelveCapacity){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return bookcase.get(shelveNumber).get(bookNumber);
     }
 
     public void showBookcase() {
