@@ -4,11 +4,16 @@ public class Main {
 
     public static void main(String[] args) {
         BST<Integer> tree = new BST<>();
-        for (int i = 0; i < 100; i++) {
-            tree.add(new Random().nextInt(50));
+        tree.add(5);
+        tree.add(1);
+        tree.add(7);
+        tree.add(12);
+        tree.add(-3);
+        for (int i = 0; i < 13; i++) {
+            System.out.println(i + " " + tree.find(i));
         }
-        System.out.println(tree.inOrder());
+        tree.showTree();
         System.out.println();
-        System.out.println(tree.size());
+        tree.showPreOrder();
     }
 }

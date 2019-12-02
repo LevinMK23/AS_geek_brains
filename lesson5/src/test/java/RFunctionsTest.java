@@ -30,8 +30,8 @@ class RFunctionsTest {
     void factor() {
         foo = new RFunctions();
         assertEquals(new BigInteger("6"), foo.factor(3));
-        assertEquals(new BigInteger("24"), foo.fib(4));
-        assertEquals(new BigInteger("120"), foo.fib(5));
+        assertEquals(new BigInteger("24"), foo.factor(4));
+        assertEquals(new BigInteger("120"), foo.factor(5));
     }
 
     @Test
@@ -39,7 +39,7 @@ class RFunctionsTest {
         foo = new RFunctions();
         try {
             Scanner in = new Scanner(new File(
-                    "C:\\Users\\Mikhail\\Downloads\\lesson1\\lesson5\\src\\main\\resources\\reversedata.txt"));
+                    "C:\\Users\\Mikhail\\IdeaProjects\\AS_geek_brains\\lesson5\\src\\main\\resources\\reversedata.txt"));
             PrintWriter writer = new PrintWriter(new File("reversedata.ans"));
             foo.reverse(in, writer);
             writer.close();
@@ -64,7 +64,7 @@ class RFunctionsTest {
     void mergeSort() {
         foo = new RFunctions();
         Random rnd = new Random();
-        ArrayList<Integer> list  = new ArrayList<>(), list1 = new ArrayList<>();
+        List<Integer> list  = new ArrayList<>(), list1 = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
             int value = rnd.nextInt(100000);
             list1.add(value);
@@ -82,8 +82,8 @@ class RFunctionsTest {
         for (int i = 0; i < 5; i++) {
             list.add(i+1);
         }
-        ArrayList<Integer> left = foo.split(list).getKey();
-        ArrayList<Integer> right = foo.split(list).getValue();
+        List<Integer> left = foo.split(list).getKey();
+        List<Integer> right = foo.split(list).getValue();
         assertEquals("[1, 2, 3]", left.toString());
         assertEquals("[4, 5]", right.toString());
         list.add(6);
@@ -104,7 +104,7 @@ class RFunctionsTest {
         for (int i = 0; i < 9; i++) {
             right.add(i+3);
         }
-        ArrayList<Integer> list = foo.merge(left, right);
+        List<Integer> list = foo.merge(left, right);
         assertEquals("[1, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9, 10, 11]", list.toString());
     }
 
