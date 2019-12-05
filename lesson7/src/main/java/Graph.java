@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Graph {
 
     //Функция должна вернуть количество
-    // знакомых у самого популярного человека
-    //знакомые это друзья и друзья друзей в глубину
+    //    // знакомых у самого популярного человека
+    //    //знакомые это друзья и друзья друзей в глубину
     //до бесконечности)))
     //самый популярный человек - это человек у
     //которого больше всего знакомых
@@ -35,13 +35,13 @@ public class Graph {
     //вернуть путь с минимальным вторым городом
     //путь должен состоять из n чисел
     static int [] travelingSalesmanWay(Scanner in){
-        int n = in.nextInt();
-        int [][] m = new int[n][n];//matrix
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                m[i][j] = in.nextInt();
+            int n = in.nextInt();
+            int [][] m = new int[n][n];//matrix
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    m[i][j] = in.nextInt();
+                }
             }
-        }
         //TODO
         return null;
     }
