@@ -9,7 +9,6 @@ public class Test {
         //список смежности
         ArrayList<ArrayList<Vertex>> graph = new ArrayList<>();
         ArrayList<Vertex> vertices = new ArrayList<>();
-
         int n = 7;
         for (int i = 0; i < 8; i++) {
             graph.add(new ArrayList<>());
